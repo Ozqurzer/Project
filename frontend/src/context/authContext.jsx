@@ -38,6 +38,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await registerUser(user);
       if (res.status === 200) {
+        console.log("successfully logged in:", resp.data);
         setUser(res.data);
         setIsAuthenticated(true); // Asegúrate de establecer isAuthenticated en true aquí
       }
