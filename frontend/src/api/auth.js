@@ -5,9 +5,7 @@ const BASE_URL = 'http://localhost:5555/api';
 export const registerUser = async (userData) => axios.post(`${BASE_URL}/register`, userData);
 
 
-export const loginUser = async (user) => axios.post(`${BASE_URL}/login`, user, {
-        withCredentials: true // hinzufügen credentials: 'include'
-     });
+
 export const loginUser = async (user) => {
     return axios.post(`${BASE_URL}/login`, user, {
         withCredentials: true // hinzufügen credentials: 'include'

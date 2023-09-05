@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "../schemas/auth";
 
 import { useForm } from "react-hook-form";
-import { loginUser } from '../api/auth';
+import { loginUser } from '../api/auth.js';
 
 function LoginPage() {
   const [loading, setLoading] = useState(false);
