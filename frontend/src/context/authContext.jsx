@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { createContext, useContext, useState } from "react";
-import { loginUser, registerUser, verifyTokenRequest } from "../api/auth";
+import { loginUser, registerUser, verifyTokenRequest } from "../api/auth.js";
 import Cookies from "js-cookie";
 
 const AuthContext = createContext();
