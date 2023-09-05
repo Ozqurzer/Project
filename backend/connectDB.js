@@ -5,11 +5,11 @@ dotenv.config();
 
 async function connectMongoose() {
   const _pwd = process.env.MONGO_PWD;
-  const _database = "profile";
+  const _database = "User";
 
   const _user = process.env.USER1;
 
-  const _cluster = "cluster0.t8co3rg.mongodb.net";
+  const _cluster = "cluster0.6ugjdnp.mongodb.net";
   const _uri = `mongodb+srv://${_user}:${_pwd}@${_cluster}/${_database}?retryWrites=true&w=majority`;
 
   try {
