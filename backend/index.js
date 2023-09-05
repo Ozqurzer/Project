@@ -10,7 +10,8 @@ const app = express();
 const port = process.env.PORT
 //credentials ist wichtig für cookies
 app.use(cors({
-  origin: 'http://localhost:5173',credentials: true
+  origin: process.env.ALLOWED_ORIGINS || 'http://localhost:5173',
+  credentials: true
 }));
 
 
