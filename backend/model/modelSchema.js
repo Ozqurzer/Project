@@ -23,3 +23,14 @@ UserSchema.methods.isPasswordValid = async function (password) {
 };
 
 export const User = mongoose.model("User", UserSchema);
+
+
+const protocollSchema=new mongoose.Schema({
+  thema:{type:String,required:true},
+  datum:{type:String,required:true},
+  time:{type:String,required:true},
+  student:{type:String,required:true},
+})
+
+export const Protocoll=mongoose.model("Protocoll",protocollSchema);
+
