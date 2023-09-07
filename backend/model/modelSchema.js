@@ -26,6 +26,7 @@ export const User = mongoose.model("User", UserSchema);
 
 
 const protocollSchema=new mongoose.Schema({
+  uuid:{type:String,required:true},
   thema:{type:String,required:true},
   datum:{type:String,required:true},
   time:{type:String,required:true},
