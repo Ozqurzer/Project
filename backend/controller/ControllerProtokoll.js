@@ -9,11 +9,12 @@ import {Protocoll} from "../model/modelSchema.js";
 
 export const protokollForumular = async (req, res) => {
     try {
-        const { thema, datum, time, student } = req.body;
+        const { uuid,thema, datum, time, student } = req.body;
 
 
         const newProtokoll = new Protocoll({
-          thema,
+          uuid,
+            thema,
             datum,
             time,
             student

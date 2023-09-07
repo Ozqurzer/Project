@@ -1,9 +1,9 @@
 POST http://localhost:5555/api/protokoll
 Content-Type: application/json
 
-{
-  "thema": "JS",
-  "datum": "2020-01-01",
+{"uuid": 3,
+  "thema": "php",
+  "datum": "2020-08-09",
   "time": "12:00",
   "student": "tester"
 }
