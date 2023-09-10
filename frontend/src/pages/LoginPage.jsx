@@ -31,7 +31,7 @@ function LoginPage() {
 
       const response = await loginUser(values);
       console.log('Login successful:', response);
-
+navigate("/profile");
       // Aquí podrías manejar el almacenamiento del token y la redirección
     } catch (error) {
       setError('Invalid credentials. Please try again.'); // Mensaje genérico para credenciales incorrectas
@@ -46,6 +46,7 @@ function LoginPage() {
     if (isAuthenticated) {
       navigate("/profile");
     }
+
   
   }, [isAuthenticated]);
 

@@ -32,8 +32,8 @@ export const AuthProvider = ({ children }) => {
       };
     }
   }, [errors]);
-  
-// Funciones de autenticación
+
+  // Funciones de autenticación
   const signup = async (user) => {
     try {
       const res = await registerUser(user);
@@ -53,6 +53,7 @@ export const AuthProvider = ({ children }) => {
       const res = await loginUser(user);
       setUser(res.data);
       setIsAuthenticated(true);
+      Cookies.set("token", res.data.token, { expires: 7 });
     } catch (error) {
       console.log(error);
       setErrors(error.response.data.message);
@@ -62,26 +63,26 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     Cookies.remove("token");
     setUser(null);
+    console.log(user);
     setIsAuthenticated(false);
   };
 
-
-    // Verificación de inicio de sesión al cargar el componente
+  // Verificación de inicio de sesión al cargar el componente
   useEffect(() => {
     const checkLogin = async () => {
-      const cookies = Cookies.get();
-      if (!cookies.token) {
+      const token = Cookies.get("token");
+      if (!token) {
         setIsAuthenticated(false);
         setLoading(false);
         return;
       }
 
       try {
-        const res = await verifyTokenRequest(cookies.token);
-        console.log(res);
+        const res = await verifyTokenRequest();
+
         if (!res.data) return setIsAuthenticated(false);
         setIsAuthenticated(true);
-        setUser(res.data);
+        setUser(res.data.data);
         setLoading(false);
       } catch (error) {
         setIsAuthenticated(false);
