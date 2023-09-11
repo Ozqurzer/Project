@@ -61,6 +61,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
+    Cookies.remove("isLogged");
     Cookies.remove("token");
     setUser(null);
     console.log(user);
@@ -70,7 +71,7 @@ export const AuthProvider = ({ children }) => {
   // Verificación de inicio de sesión al cargar el componente
   useEffect(() => {
     const checkLogin = async () => {
-      const token = Cookies.get("token");
+      const token = Cookies.get("isLogged");
       if (!token) {
         setIsAuthenticated(false);
         setLoading(false);
@@ -82,7 +83,7 @@ export const AuthProvider = ({ children }) => {
 
         if (!res.data) return setIsAuthenticated(false);
         setIsAuthenticated(true);
-        setUser(res.data.data);
+        setUser(res.data);
         setLoading(false);
       } catch (error) {
         setIsAuthenticated(false);
