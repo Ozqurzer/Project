@@ -1,0 +1,4 @@
+POST http://localhost:5555/api/slackpost
+Content-Type: application/json
+
+{"message" : "hallo Martin"}

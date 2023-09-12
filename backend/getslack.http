@@ -1,0 +1,2 @@
+GET http://localhost:5555/api//send-message
+Accept: application/json

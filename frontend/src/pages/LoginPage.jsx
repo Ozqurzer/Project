@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { Card, Button, Input, Label } from "../components/ui";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
@@ -7,11 +7,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "../schemas/auth";
 
 import { useForm } from "react-hook-form";
-import { loginUser } from '../api/auth';
+import { loginUser } from "../api/auth";
 
 function LoginPage() {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const {
     register,
@@ -27,28 +27,25 @@ function LoginPage() {
   const onSubmit = async (values) => {
     try {
       setLoading(true);
-      setError('');
+      setError("");
 
       const response = await loginUser(values);
-      console.log('Login successful:', response);
-
+      console.log("Login successful:", response);
+      navigate("/profile");
       // Aquí podrías manejar el almacenamiento del token y la redirección
     } catch (error) {
-      setError('Invalid credentials. Please try again.'); // Mensaje genérico para credenciales incorrectas
-      console.error('Login error:', error);
+      setError("Invalid credentials. Please try again."); // Mensaje genérico para credenciales incorrectas
+      console.error("Login error:", error);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    
     if (isAuthenticated) {
       navigate("/profile");
     }
-  
   }, [isAuthenticated]);
-
 
   return (
     <div className="h-[calc(100vh-100px)] flex items-center justify-center">
@@ -73,16 +70,21 @@ function LoginPage() {
             placeholder="Write your password"
             {...register("password", { required: true, minLength: 6 })}
           />
-          {errors.password && <p className="text-red-500">Password is required</p>}
+          {errors.password && (
+            <p className="text-red-500">Password is required</p>
+          )}
 
           {error && <p className="text-red-500">{error}</p>}
 
           <Button type="submit" disabled={loading}>
-            {loading ? 'Logging in...' : 'Login'}
+            {loading ? "Logging in..." : "Login"}
           </Button>
         </form>
         <p className="flex gap-x-2 justify-between">
-          Don't have an account? <Link to="/register" className="text-sky-500">Sign up</Link>
+          Don't have an account?{" "}
+          <Link to="/register" className="text-sky-500">
+            Sign up
+          </Link>
         </p>
       </Card>
     </div>
